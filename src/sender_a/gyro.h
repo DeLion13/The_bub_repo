@@ -1,4 +1,4 @@
-// MPU-6050 Accelerometer + Gyro
+// MPU-6050 Accelerometer + Gyro from site
 #ifndef GYRO_H
 #define GYRO_H
 #include <Wire.h>
@@ -90,13 +90,6 @@
 #define MPU6050_FIFO_R_W           0x74   // R/W
 #define MPU6050_WHO_AM_I           0x75   // R
 
-
-// Defines for the bits, to be able to change 
-// between bit number and binary definition.
-// By using the bit number, programming the sensor 
-// is like programming the AVR microcontroller.
-// But instead of using "(1<<X)", or "_BV(X)", 
-// the Arduino "bit(X)" is used.
 #define MPU6050_D0 0
 #define MPU6050_D1 1
 #define MPU6050_D2 2
@@ -106,13 +99,8 @@
 #define MPU6050_D6 6
 #define MPU6050_D7 7
 
-// AUX_VDDIO Register
-#define MPU6050_AUX_VDDIO MPU6050_D7  // I2C high: 1=VDD, 0=VLOGIC
+#define MPU6050_AUX_VDDIO MPU6050_D7
 
-// CONFIG Register
-// DLPF is Digital Low Pass Filter for both gyro and accelerometers.
-// These are the names for the bits.
-// Use these only with the bit() macro.
 #define MPU6050_DLPF_CFG0     MPU6050_D0
 #define MPU6050_DLPF_CFG1     MPU6050_D1
 #define MPU6050_DLPF_CFG2     MPU6050_D2
@@ -150,9 +138,6 @@
 #define MPU6050_DLPF_CFG_6 (bit(MPU6050_DLPF_CFG2)|bit(MPU6050_DLPF_CFG1))
 #define MPU6050_DLPF_CFG_7 (bit(MPU6050_DLPF_CFG2)|bit(MPU6050_DLPF_CFG1)|bit(MPU6050_DLPF_CFG0))
 
-// Alternative names for the combined definitions
-// This name uses the bandwidth (Hz) for the accelometer,
-// for the gyro the bandwidth is almost the same.
 #define MPU6050_DLPF_260HZ    MPU6050_DLPF_CFG_0
 #define MPU6050_DLPF_184HZ    MPU6050_DLPF_CFG_1
 #define MPU6050_DLPF_94HZ     MPU6050_DLPF_CFG_2
@@ -162,11 +147,6 @@
 #define MPU6050_DLPF_5HZ      MPU6050_DLPF_CFG_6
 #define MPU6050_DLPF_RESERVED MPU6050_DLPF_CFG_7
 
-// GYRO_CONFIG Register
-// The XG_ST, YG_ST, ZG_ST are bits for selftest.
-// The FS_SEL sets the range for the gyro.
-// These are the names for the bits.
-// Use these only with the bit() macro.
 #define MPU6050_FS_SEL0 MPU6050_D3
 #define MPU6050_FS_SEL1 MPU6050_D4
 #define MPU6050_ZG_ST   MPU6050_D5
@@ -179,18 +159,11 @@
 #define MPU6050_FS_SEL_2 (bit(MPU6050_FS_SEL1))
 #define MPU6050_FS_SEL_3 (bit(MPU6050_FS_SEL1)|bit(MPU6050_FS_SEL0))
 
-// Alternative names for the combined definitions
-// The name uses the range in degrees per second.
 #define MPU6050_FS_SEL_250  MPU6050_FS_SEL_0
 #define MPU6050_FS_SEL_500  MPU6050_FS_SEL_1
 #define MPU6050_FS_SEL_1000 MPU6050_FS_SEL_2
 #define MPU6050_FS_SEL_2000 MPU6050_FS_SEL_3
 
-// ACCEL_CONFIG Register
-// The XA_ST, YA_ST, ZA_ST are bits for selftest.
-// The AFS_SEL sets the range for the accelerometer.
-// These are the names for the bits.
-// Use these only with the bit() macro.
 #define MPU6050_ACCEL_HPF0 MPU6050_D0
 #define MPU6050_ACCEL_HPF1 MPU6050_D1
 #define MPU6050_ACCEL_HPF2 MPU6050_D2
@@ -200,7 +173,6 @@
 #define MPU6050_YA_ST      MPU6050_D6
 #define MPU6050_XA_ST      MPU6050_D7
 
-// Combined definitions for the ACCEL_HPF values
 #define MPU6050_ACCEL_HPF_0 (0)
 #define MPU6050_ACCEL_HPF_1 (bit(MPU6050_ACCEL_HPF0))
 #define MPU6050_ACCEL_HPF_2 (bit(MPU6050_ACCEL_HPF1))
@@ -208,8 +180,6 @@
 #define MPU6050_ACCEL_HPF_4 (bit(MPU6050_ACCEL_HPF2))
 #define MPU6050_ACCEL_HPF_7 (bit(MPU6050_ACCEL_HPF2)|bit(MPU6050_ACCEL_HPF1)|bit(MPU6050_ACCEL_HPF0))
 
-// Alternative names for the combined definitions
-// The name uses the Cut-off frequency.
 #define MPU6050_ACCEL_HPF_RESET  MPU6050_ACCEL_HPF_0
 #define MPU6050_ACCEL_HPF_5HZ    MPU6050_ACCEL_HPF_1
 #define MPU6050_ACCEL_HPF_2_5HZ  MPU6050_ACCEL_HPF_2
@@ -217,7 +187,6 @@
 #define MPU6050_ACCEL_HPF_0_63HZ MPU6050_ACCEL_HPF_4
 #define MPU6050_ACCEL_HPF_HOLD   MPU6050_ACCEL_HPF_7
 
-// Combined definitions for the AFS_SEL values
 #define MPU6050_AFS_SEL_0 (0)
 #define MPU6050_AFS_SEL_1 (bit(MPU6050_AFS_SEL0))
 #define MPU6050_AFS_SEL_2 (bit(MPU6050_AFS_SEL1))

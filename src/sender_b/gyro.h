@@ -1,4 +1,4 @@
-// MPU-6050 Accelerometer + Gyro
+// MPU-6050 Accelerometer + Gyro from site
 #ifndef GYRO_H
 #define GYRO_H
 #include <Wire.h>

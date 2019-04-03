@@ -16,7 +16,6 @@ void setup() {
     transmit_data[i]=0;
   }
   Serial.begin(38400);
-  // Initialize the 'Wire' class for the I2C-bus.
   Wire.begin();
 
 
@@ -25,10 +24,8 @@ void setup() {
   error = MPU6050_read (MPU6050_PWR_MGMT_2, &c, 1);
   
 
-  // Clear the 'sleep' bit to start the sensor.
   MPU6050_write_reg (MPU6050_PWR_MGMT_1, 0);
   
-  //Initialize the angles
   calibrate_sensors();  
   set_last_read_angle_data(millis(), 0, 0, 0, 0, 0, 0);
 }
@@ -41,7 +38,7 @@ void loop() {
   Serial.print(angles.x);
   Serial.print("    ");
   Serial.println(angles.y);
-  if (radio.write(&transmit_data, sizeof(transmit_data))) {    // отправка пакета transmit_data
+  if (radio.write(&transmit_data, sizeof(transmit_data))) {
     trnsmtd_pack++;
   } else {
     failed_pack++;
